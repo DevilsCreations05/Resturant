@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast & Tap | Hyderabad Biryani & Grill Co</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <svg viewBox="0 0 100 100" width="80" height="80">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#c8a97e" stroke-width="2" stroke-dasharray="283" stroke-dashoffset="283" class="preloader-circle"/>
+                </svg>
+            </div>
+            <p class="preloader-text">Toast & Tap</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-text">Toast<span class="ampersand">&</span>Tap</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">Our Story</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#drinks" class="nav-link">Drinks</a></li>
+                <li><a href="#breakfast" class="nav-link">Breakfast</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="#menu" class="nav-cta">View Menu</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle" data-animate="fade-up">Welcome to</p>
+            <h1 class="hero-title" data-animate="fade-up" data-delay="200">
+                <span class="title-line">Toast</span>
+                <span class="title-ampersand">&</span>
+                <span class="title-line">Tap</span>
+            </h1>
+            <p class="hero-tagline" data-animate="fade-up" data-delay="400">Hyderabad Biryani & Grill Co</p>
+            <p class="hero-description" data-animate="fade-up" data-delay="600">Where royal Hyderabadi flavors meet modern comfort food</p>
+            <div class="hero-ctas" data-animate="fade-up" data-delay="800">
+                <a href="#menu" class="btn btn-primary magnetic-btn">Explore Menu</a>
+                <a href="#about" class="btn btn-outline magnetic-btn">Our Story</a>
+            </div>
+            <div class="hero-info" data-animate="fade-up" data-delay="1000">
+                <div class="hero-info-item">
+                    <span class="hero-info-icon">&#9201;</span>
+                    <span>Open Daily 7AM - 10PM</span>
+                </div>
+                <div class="hero-info-divider"></div>
+                <div class="hero-info-item">
+                    <span class="hero-info-icon">&#9906;</span>
+                    <span>55 High Street, Newport</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" id="scrollIndicator">
+            <div class="scroll-arrows">
+                <span class="scroll-chevron"></span>
+                <span class="scroll-chevron"></span>
+                <span class="scroll-chevron"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images" data-animate="fade-right">
+                    <div class="about-img-wrapper img-1">
+                        <div class="about-img" style="background: linear-gradient(135deg, #c8a97e33, #1a120b88);"></div>
+                    </div>
+                    <div class="about-img-wrapper img-2">
+                        <div class="about-img" style="background: linear-gradient(135deg, #d4a574, #8b6914);"></div>
+                    </div>
+                    <div class="about-floating-badge">
+                        <span class="badge-number">Est.</span>
+                        <span class="badge-text">Newport, Wales</span>
+                    </div>
+                </div>
+                <div class="about-content" data-animate="fade-left">
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">A Passion for <br><em>Authentic Flavors</em></h2>
+                    <p class="about-text">Hyderabad Biryani & Grill Co (Toast & Tap) was born from a passion for rich flavors and authentic cooking. Inspired by the royal kitchens of Hyderabad, we bring the timeless tradition of slow-cooked biryani to the heart of Newport.</p>
+                    <p class="about-text">We've quickly built a reputation for delivering bold spices, perfectly layered rice, and juicy, tender meats. Every biryani is crafted with care, using aromatic basmati rice, handpicked spices, and traditional dum cooking methods.</p>
+                    <p class="about-text">Alongside biryanis, our menu blends modern comfort food like burgers, wraps, and rice bowls -- creating a perfect fusion of tradition and contemporary taste.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon">&#127858;</div>
+                            <h4>Dum Biryani</h4>
+                            <p>Traditional slow-cooked</p>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">&#127860;</div>
+                            <h4>Fresh Daily</h4>
+                            <p>Handpicked spices</p>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon">&#10084;</div>
+                            <h4>Made with Love</h4>
+                            <p>Crafted with care</p>
+                        </div>
+                    </div>
+                    <p class="about-company">A venture by <strong>Moons Elephant Limited</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Marquee -->
+    <section class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>Biryani</span><span class="marquee-dot">&#9830;</span>
+                <span>Burgers</span><span class="marquee-dot">&#9830;</span>
+                <span>Wraps</span><span class="marquee-dot">&#9830;</span>
+                <span>Rice Bowls</span><span class="marquee-dot">&#9830;</span>
+                <span>Pizza</span><span class="marquee-dot">&#9830;</span>
+                <span>Paninis</span><span class="marquee-dot">&#9830;</span>
+                <span>Desserts</span><span class="marquee-dot">&#9830;</span>
+                <span>Cocktails</span><span class="marquee-dot">&#9830;</span>
+                <span>Biryani</span><span class="marquee-dot">&#9830;</span>
+                <span>Burgers</span><span class="marquee-dot">&#9830;</span>
+                <span>Wraps</span><span class="marquee-dot">&#9830;</span>
+                <span>Rice Bowls</span><span class="marquee-dot">&#9830;</span>
+                <span>Pizza</span><span class="marquee-dot">&#9830;</span>
+                <span>Paninis</span><span class="marquee-dot">&#9830;</span>
+                <span>Desserts</span><span class="marquee-dot">&#9830;</span>
+                <span>Cocktails</span><span class="marquee-dot">&#9830;</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-label">Lunch & Dinner</span>
+                <h2 class="section-title">Our <em>Menu</em></h2>
+                <p class="section-subtitle">All meals include a soft drink &bull; Served 12:00 PM - 9:30 PM</p>
+            </div>
+
+            <!-- Menu Tabs -->
+            <div class="menu-tabs" data-animate="fade-up" data-delay="200">
+                <button class="menu-tab active" data-tab="biryani">Biryani</button>
+                <button class="menu-tab" data-tab="burgers">Burgers</button>
+                <button class="menu-tab" data-tab="wraps">Wraps & Paninis</button>
+                <button class="menu-tab" data-tab="rice">Rice Specials</button>
+                <button class="menu-tab" data-tab="pizza">Pizza & Bowls</button>
+                <button class="menu-tab" data-tab="sides">Sides & Meat</button>
+                <button class="menu-tab" data-tab="desserts">Desserts</button>
+            </div>
+
+            <!-- Biryani -->
+            <div class="menu-panel active" id="tab-biryani">
+                <div class="menu-grid">
+                    <div class="menu-card" data-animate="fade-up">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Vegetable Biryani</h3>
+                                <span class="menu-price">&pound;8</span>
+                            </div>
+                            <p class="menu-desc">Aromatic basmati rice layered with seasonal vegetables and traditional spices</p>
+                            <span class="menu-badge veg">Veg</span>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-animate="fade-up" data-delay="100">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Egg Biryani</h3>
+                                <span class="menu-price">&pound;9</span>
+                            </div>
+                            <p class="menu-desc">Fragrant rice with perfectly spiced boiled eggs and dum-cooked flavors</p>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-animate="fade-up" data-delay="200">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Chicken Biryani</h3>
+                                <span class="menu-price">&pound;9</span>
+                            </div>
+                            <p class="menu-desc">Our signature dish - tender chicken slow-cooked with aromatic basmati rice</p>
+                            <span class="menu-badge popular">Popular</span>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-animate="fade-up" data-delay="300">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Lamb Biryani</h3>
+                                <span class="menu-price">&pound;10</span>
+                            </div>
+                            <p class="menu-desc">Succulent lamb pieces marinated and slow-cooked in traditional Hyderabadi style</p>
+                            <span class="menu-badge premium">Premium</span>
+                        </div>
+                    </div>
+                    <div class="menu-card" data-animate="fade-up" data-delay="400">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Prawn Biryani</h3>
+                                <span class="menu-price">&pound;10</span>
+                            </div>
+                            <p class="menu-desc">Juicy prawns layered with fragrant rice and royal spices</p>
+                            <span class="menu-badge premium">Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burgers -->
+            <div class="menu-panel" id="tab-burgers">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Grilled Chicken Burger</h3>
+                                <span class="menu-price">&pound;8</span>
+                            </div>
+                            <p class="menu-desc">Flame-grilled chicken breast with fresh lettuce and signature sauce, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Crispy Spicy Mayo Chicken Burger</h3>
+                                <span class="menu-price">&pound;8</span>
+                            </div>
+                            <p class="menu-desc">Crispy fried chicken with spicy mayo, served with fries</p>
+                            <span class="menu-badge popular">Popular</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Veg Burger</h3>
+                                <span class="menu-price">&pound;8</span>
+                            </div>
+                            <p class="menu-desc">Delicious veggie patty with fresh toppings, served with fries</p>
+                            <span class="menu-badge veg">Veg</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Bacon & Beef Cheese Burger</h3>
+                                <span class="menu-price">&pound;8</span>
+                            </div>
+                            <p class="menu-desc">Juicy beef patty with crispy bacon and melted cheese, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header">
+                                <h3>Double Stack Beef Burger</h3>
+                                <span class="menu-price">&pound;9.50</span>
+                            </div>
+                            <p class="menu-desc">Two juicy beef patties stacked high with all the fixings, served with fries</p>
+                            <span class="menu-badge premium">Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="menu-note">Add Extra Cheese +&pound;0.50</p>
+            </div>
+
+            <!-- Wraps & Paninis -->
+            <div class="menu-panel" id="tab-wraps">
+                <div class="menu-grid">
+                    <h3 class="menu-grid-title">Wraps & Fries</h3>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Grilled Chicken Wrap</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Tender grilled chicken in a warm tortilla with fresh salad, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Crispy Spicy Mayo Chicken Wrap</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Crispy chicken with spicy mayo in a warm wrap, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>BBQ Chicken Wrap</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Smoky BBQ chicken wrapped with fresh veggies, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Chicken Tikka Wrap</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Marinated chicken tikka pieces in a warm wrap, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Veg Wrap</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Fresh vegetables and sauce in a warm tortilla, served with fries</p>
+                            <span class="menu-badge veg">Veg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-grid" style="margin-top: 3rem;">
+                    <h3 class="menu-grid-title">Paninis & Fries</h3>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>BBQ Chicken Panini</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Toasted panini with smoky BBQ chicken, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Grilled Chicken Panini</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Toasted panini with grilled chicken breast, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Crispy Spicy Mayo Chicken Panini</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Toasted panini with crispy chicken and spicy mayo, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Chicken Tikka Panini</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Toasted panini with marinated chicken tikka, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Veg Panini</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Toasted panini with fresh grilled vegetables, served with fries</p>
+                            <span class="menu-badge veg">Veg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rice Specials -->
+            <div class="menu-panel" id="tab-rice">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Chicken Fried Rice</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Wok-tossed rice with tender chicken pieces and vegetables</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Egg Fried Rice</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Classic egg fried rice with a perfect blend of seasonings</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Chilli Con Carne Rice Bowl</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Hearty chilli con carne served over fluffy rice</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Katsu Chicken Rice Bowl</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Crispy chicken cutlet with smooth katsu curry sauce over rice</p>
+                            <span class="menu-badge popular">Popular</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Burrito Rice Bowl</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc">Mexican-inspired rice bowl with chicken or veg toppings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pizza & Bowls -->
+            <div class="menu-panel" id="tab-pizza">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Pizza & Chips</h3><span class="menu-price">&pound;9</span></div>
+                            <p class="menu-desc">Choose your toppings: any 2 from Chicken, Pepperoni, Mushroom, Onion, Corn. Served with chips</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Custom Bowl</h3><span class="menu-price">&pound;8</span></div>
+                            <p class="menu-desc"><strong>Base:</strong> Salad, Fries, Nachos, or Rice<br><strong>Protein:</strong> Grilled Chicken, BBQ Chicken, Chicken Tikka, Chicken Curry, Grilled Sausage, Bacon, or Beef<br><strong>Sauce:</strong> Peri Peri, BBQ, Sweet Chilli, Mayo, or Garlic Mayo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sides & Meat -->
+            <div class="menu-panel" id="tab-sides">
+                <div class="menu-grid">
+                    <h3 class="menu-grid-title">Meat & Fries</h3>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Wings</h3><span class="menu-price">&pound;7</span></div>
+                            <p class="menu-desc">Crispy chicken wings with your choice of sauce, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Strips</h3><span class="menu-price">&pound;7</span></div>
+                            <p class="menu-desc">Golden chicken strips, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Nuggets</h3><span class="menu-price">&pound;7</span></div>
+                            <p class="menu-desc">Crispy chicken nuggets, served with fries</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Sausage</h3><span class="menu-price">&pound;7</span></div>
+                            <p class="menu-desc">Grilled sausage, served with fries</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-grid" style="margin-top: 3rem;">
+                    <h3 class="menu-grid-title">Sides</h3>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>French Fries</h3><span class="menu-price">&pound;2.50</span></div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Onion Rings</h3><span class="menu-price">&pound;2.50</span></div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Chicken Spring Rolls</h3><span class="menu-price">&pound;2.50</span></div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Veg Spring Rolls</h3><span class="menu-price">&pound;2.50</span></div>
+                            <span class="menu-badge veg">Veg</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Corn on Cob</h3><span class="menu-price">&pound;2.50</span></div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Garlic Bread</h3><span class="menu-price">&pound;2.50</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-panel" id="tab-desserts">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Banoffee Cheesecake</h3><span class="menu-price">&pound;4.99</span></div>
+                            <p class="menu-desc">Creamy banoffee cheesecake with a buttery biscuit base</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Sticky Toffee Pudding</h3><span class="menu-price">&pound;4.99</span></div>
+                            <p class="menu-desc">Warm sticky toffee pudding drizzled with toffee sauce</p>
+                            <span class="menu-badge popular">Popular</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Apple Crumble</h3><span class="menu-price">&pound;4.99</span></div>
+                            <p class="menu-desc">Classic apple crumble with a golden buttery topping</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Triple Chocolate Brownie</h3><span class="menu-price">&pound;4.99</span></div>
+                            <p class="menu-desc">Rich and fudgy triple chocolate brownie</p>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-inner">
+                            <div class="menu-card-header"><h3>Ice Cream (3 Scoops)</h3><span class="menu-price">&pound;4.99</span></div>
+                            <p class="menu-desc">Three generous scoops of your choice</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drinks Section -->
+    <section class="drinks-section" id="drinks">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-label">Drinks</span>
+                <h2 class="section-title">Our <em>Bar</em></h2>
+                <p class="section-subtitle">From craft beers to premium spirits</p>
+            </div>
+
+            <div class="drinks-grid" data-animate="fade-up" data-delay="200">
+                <!-- Wines -->
+                <div class="drinks-category">
+                    <div class="drinks-category-header">
+                        <h3>Wines</h3>
+                        <span class="drinks-icon">&#127863;</span>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Red Wine</h4>
+                        <p class="drinks-pricing">Bottle &pound;17.99 | 250ml &pound;6.99 | 175ml &pound;5.99</p>
+                        <ul class="drinks-list">
+                            <li>Jack Rabbit Merlot</li>
+                            <li>Jam Shed Shiraz</li>
+                            <li>Campo Viejo Rioja</li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>White Wine</h4>
+                        <p class="drinks-pricing">Bottle &pound;16.99 | 250ml &pound;6.50 | 175ml &pound;5.50</p>
+                        <ul class="drinks-list">
+                            <li>Mud House Chile</li>
+                            <li>Jack Rabbit Pinot Grigio</li>
+                            <li>Jam Shed Chardonnay</li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Ros&eacute; Wine</h4>
+                        <p class="drinks-pricing">Bottle &pound;16.99 | 250ml &pound;6.50 | 175ml &pound;5.50</p>
+                        <ul class="drinks-list">
+                            <li>Jack Rabbit White Zinfandel</li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Sparkling Wine</h4>
+                        <ul class="drinks-list">
+                            <li><span>Prosecco Spumante Extra Dry 20cl</span><span class="drink-price">&pound;6.49</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Beer -->
+                <div class="drinks-category">
+                    <div class="drinks-category-header">
+                        <h3>Beer & Cider</h3>
+                        <span class="drinks-icon">&#127866;</span>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Beer</h4>
+                        <p class="drinks-pricing">Half Pint: 4 for &pound;12 | Pint: 4 for &pound;20 | All Day</p>
+                        <ul class="drinks-list">
+                            <li><span>Corona</span><span class="drink-price">&pound;3.50 / &pound;5.50</span></li>
+                            <li><span>Peroni</span><span class="drink-price">&pound;3.50 / &pound;5.50</span></li>
+                            <li><span>Heineken</span><span class="drink-price">&pound;3.50 / &pound;5.50</span></li>
+                            <li><span>Coors Light</span><span class="drink-price">&pound;3.50 / &pound;5.50</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Premium Beer</h4>
+                        <p class="drinks-pricing">Half Pint: 4 for &pound;14 | Pint: 4 for &pound;22 | All Day</p>
+                        <ul class="drinks-list">
+                            <li><span>Birra Moretti</span><span class="drink-price">&pound;4.00 / &pound;6.00</span></li>
+                            <li><span>Stella Artois</span><span class="drink-price">&pound;4.00 / &pound;6.00</span></li>
+                            <li><span>Asahi</span><span class="drink-price">&pound;4.00 / &pound;6.00</span></li>
+                            <li><span>Madri</span><span class="drink-price">&pound;4.00 / &pound;6.00</span></li>
+                            <li><span>Guinness</span><span class="drink-price">&pound;4.00 / &pound;6.00</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Zero% Beer</h4>
+                        <ul class="drinks-list">
+                            <li><span>Corona Zero</span><span class="drink-price">&pound;3.50</span></li>
+                            <li><span>Heineken Zero</span><span class="drink-price">&pound;3.50</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Cider</h4>
+                        <p class="drinks-pricing">4 for &pound;14 | All Day</p>
+                        <ul class="drinks-list">
+                            <li><span>Rekorderlig Strawberry & Lime</span><span class="drink-price">&pound;4.00</span></li>
+                            <li><span>Rekorderlig Wild Berries</span><span class="drink-price">&pound;4.00</span></li>
+                            <li><span>Bulmer Original</span><span class="drink-price">&pound;4.00</span></li>
+                            <li><span>Old Mout Berries & Cherries</span><span class="drink-price">&pound;4.00</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Spirits -->
+                <div class="drinks-category">
+                    <div class="drinks-category-header">
+                        <h3>Spirits</h3>
+                        <span class="drinks-icon">&#127864;</span>
+                    </div>
+                    <p class="drinks-pricing" style="text-align:center; margin-bottom: 1rem;">25ml | Double up with mixer &pound;3.50</p>
+                    <div class="drinks-subcategory">
+                        <h4>Whiskey</h4>
+                        <ul class="drinks-list">
+                            <li><span>Jameson Irish</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>Glenfiddich 12yo</span><span class="drink-price">&pound;4.89</span></li>
+                            <li><span>Jack Daniels</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>Johnnie Walker Red Label</span><span class="drink-price">&pound;3.89</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Gin</h4>
+                        <ul class="drinks-list">
+                            <li><span>Bombay Sapphire</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>Gordons Original</span><span class="drink-price">&pound;3.69</span></li>
+                            <li><span>Gordons Pink</span><span class="drink-price">&pound;3.69</span></li>
+                            <li><span>JJ London Dry</span><span class="drink-price">&pound;3.49</span></li>
+                            <li><span>JJ Pink</span><span class="drink-price">&pound;3.49</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Rum</h4>
+                        <ul class="drinks-list">
+                            <li><span>Bacardi White</span><span class="drink-price">&pound;3.49</span></li>
+                            <li><span>Captain Morgan Dark</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>Kraken Spiced Rum</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>Captain Morgan Spiced</span><span class="drink-price">&pound;3.89</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Vodka</h4>
+                        <ul class="drinks-list">
+                            <li><span>Absolute</span><span class="drink-price">&pound;4.49</span></li>
+                            <li><span>Smirnoff Red</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>JJ Artisanal</span><span class="drink-price">&pound;3.89</span></li>
+                            <li><span>JJ Raspberry</span><span class="drink-price">&pound;3.89</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Liqueur & Tequila</h4>
+                        <ul class="drinks-list">
+                            <li><span>J&auml;germeister</span><span class="drink-price">&pound;3.49</span></li>
+                            <li><span>Baileys Cream</span><span class="drink-price">&pound;3.49</span></li>
+                            <li><span>Aperol Aperitivo</span><span class="drink-price">&pound;3.49</span></li>
+                            <li><span>Malibu</span><span class="drink-price">&pound;3.49</span></li>
+                            <li><span>El Jimador Blanco</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>El Jimador Reposado</span><span class="drink-price">&pound;3.99</span></li>
+                            <li><span>Tequila Rose SB Cream</span><span class="drink-price">&pound;3.49</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Soft Drinks -->
+                <div class="drinks-category">
+                    <div class="drinks-category-header">
+                        <h3>Soft Drinks</h3>
+                        <span class="drinks-icon">&#129380;</span>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Soft Drinks</h4>
+                        <ul class="drinks-list">
+                            <li><span>Coke Original</span><span class="drink-price">&pound;2.50</span></li>
+                            <li><span>Diet Coke</span><span class="drink-price">&pound;2.50</span></li>
+                            <li><span>Coke Zero</span><span class="drink-price">&pound;2.50</span></li>
+                            <li><span>Sprite</span><span class="drink-price">&pound;2.50</span></li>
+                            <li><span>J2O Orange</span><span class="drink-price">&pound;2.50</span></li>
+                            <li><span>J2O Mango</span><span class="drink-price">&pound;2.50</span></li>
+                            <li><span>Appetiser</span><span class="drink-price">&pound;2.50</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Energy Drinks</h4>
+                        <ul class="drinks-list">
+                            <li><span>Red Bull</span><span class="drink-price">&pound;2.50</span></li>
+                            <li><span>Red Bull Sugar Free</span><span class="drink-price">&pound;2.50</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Water</h4>
+                        <ul class="drinks-list">
+                            <li><span>Still Water Bottle</span><span class="drink-price">&pound;1.99</span></li>
+                            <li><span>Sparkling Water Bottle</span><span class="drink-price">&pound;1.99</span></li>
+                        </ul>
+                    </div>
+                    <div class="drinks-subcategory">
+                        <h4>Mixers (Schweppes)</h4>
+                        <ul class="drinks-list">
+                            <li><span>Lemonade / Soda / Slim Lime</span><span class="drink-price">&pound;1.99</span></li>
+                            <li><span>Indian Tonic Water / Ginger Ale</span><span class="drink-price">&pound;1.99</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breakfast Section -->
+    <section class="breakfast-section" id="breakfast">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-label">Morning</span>
+                <h2 class="section-title">Breakfast <em>Buffet</em></h2>
+                <p class="section-subtitle">All you can eat &bull; Served 7:00 AM - 10:00 AM &bull; Open Every Day</p>
+            </div>
+
+            <div class="breakfast-price-badge" data-animate="fade-up" data-delay="200">
+                <span class="breakfast-price">&pound;11.99</span>
+                <span class="breakfast-price-label">All You Can Eat</span>
+            </div>
+
+            <div class="breakfast-grid" data-animate="fade-up" data-delay="300">
+                <div class="breakfast-card">
+                    <div class="breakfast-card-icon">&#129360;</div>
+                    <h3>Continental Bakery</h3>
+                    <p>Pancakes, Croissant, White Bread, Malted Brown Bread</p>
+                </div>
+                <div class="breakfast-card">
+                    <div class="breakfast-card-icon">&#127859;</div>
+                    <h3>Cooked Breakfast</h3>
+                    <p>Eggs (Scrambled, Fried, Poached & Boiled), Hash Browns, Baked Beans, Mushrooms, Bacon Rashers, Pork Sausages, Black Pudding</p>
+                </div>
+                <div class="breakfast-card">
+                    <div class="breakfast-card-icon">&#129382;</div>
+                    <h3>Yogurts & Cereals</h3>
+                    <p>Porridge Oats, Granola, Special Kellogg's, Corn Flakes, Coco Pops, Fruit Yoghurts</p>
+                </div>
+                <div class="breakfast-card">
+                    <div class="breakfast-card-icon">&#127822;</div>
+                    <h3>Fresh Fruits</h3>
+                    <p>Bananas, Clementine, Apple</p>
+                </div>
+                <div class="breakfast-card">
+                    <div class="breakfast-card-icon">&#129347;</div>
+                    <h3>Cold Drinks</h3>
+                    <p>Apple Juice, Orange & Mandarin Juice, Cranberry Juice</p>
+                </div>
+                <div class="breakfast-card">
+                    <div class="breakfast-card-icon">&#9749;</div>
+                    <h3>Hot Drinks</h3>
+                    <p>Coffee, Tea (Soya or Oat milk available on request)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-animate="fade-right">
+                    <span class="section-label">Get In Touch</span>
+                    <h2 class="section-title">Visit <em>Us</em></h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">&#128205;</div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>55 High Street, Newport, Wales, NP20 1GA</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">&#128222;</div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+44 7867 034395</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">&#9201;</div>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Breakfast: 7:00 AM - 10:00 AM<br>Lunch & Dinner: 12:00 PM - 9:30 PM<br>Open Every Day</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">&#128666;</div>
+                            <div>
+                                <h4>Delivery</h4>
+                                <p>Available on Uber Eats</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map" data-animate="fade-left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2474.2!2d-2.9988!3d51.5882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDM1JzE3LjUiTiAywrA1OSc1NS43Ilc!5e0!3m2!1sen!2suk!4v1" width="100%" height="450" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Toast<span class="ampersand">&</span>Tap</h3>
+                    <p>Hyderabad Biryani & Grill Co</p>
+                    <p class="footer-company">A venture by Moons Elephant Limited</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#hero">Home</a>
+                    <a href="#about">Our Story</a>
+                    <a href="#menu">Menu</a>
+                    <a href="#drinks">Drinks</a>
+                    <a href="#breakfast">Breakfast</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-hours">
+                    <h4>Hours</h4>
+                    <p>Breakfast: 7AM - 10AM</p>
+                    <p>Lunch & Dinner: 12PM - 9:30PM</p>
+                    <p>Open Every Day</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Toast & Tap - Hyderabad Biryani & Grill Co. All rights reserved.</p>
+                <p>Moons Elephant Limited</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
