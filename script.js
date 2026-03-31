@@ -1,3 +1,44 @@
+// ===== Source Protection =====
+// Disable right-click context menu
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Block keyboard shortcuts for DevTools, view source, save, copy
+document.addEventListener('keydown', (e) => {
+    // F12
+    if (e.key === 'F12') { e.preventDefault(); return; }
+    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
+    if (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) { e.preventDefault(); return; }
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); return; }
+    // Ctrl+S (Save Page)
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) { e.preventDefault(); return; }
+    // Ctrl+A (Select All)
+    if (e.ctrlKey && (e.key === 'a' || e.key === 'A')) { e.preventDefault(); return; }
+    // Ctrl+C (Copy)
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'C')) { e.preventDefault(); return; }
+    // Ctrl+P (Print)
+    if (e.ctrlKey && (e.key === 'p' || e.key === 'P')) { e.preventDefault(); return; }
+});
+
+// Disable drag on all elements
+document.addEventListener('dragstart', (e) => e.preventDefault());
+
+// Disable copy & cut events
+document.addEventListener('copy', (e) => e.preventDefault());
+document.addEventListener('cut', (e) => e.preventDefault());
+
+// DevTools open detection — debugger loop
+(function() {
+    function detect() {
+        const start = performance.now();
+        debugger;
+        if (performance.now() - start > 100) {
+            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#0a0a0a;color:#c8a97e;font-family:serif;font-size:2rem;text-align:center;padding:2rem;">Please close Developer Tools to view this website.</div>';
+        }
+    }
+    setInterval(detect, 3000);
+})();
+
 // ===== Custom Cursor =====
 const cursorDot = document.getElementById('cursorDot');
 const cursorRing = document.getElementById('cursorRing');
