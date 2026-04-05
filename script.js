@@ -305,18 +305,19 @@ function animateCounter(element, target, duration) {
     requestAnimationFrame(update);
 }
 
-const priceEl = document.querySelector('.breakfast-price');
-if (priceEl) {
+const priceEls = document.querySelectorAll('.breakfast-price');
+priceEls.forEach(priceEl => {
+    const target = parseFloat(priceEl.dataset.target) || 11.99;
     const priceObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateCounter(entry.target, 11.99, 2000);
+                animateCounter(entry.target, target, 2000);
                 priceObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
     priceObserver.observe(priceEl);
-}
+});
 
 // ===== Reveal on scroll for drinks categories =====
 const drinkCards = document.querySelectorAll('.drinks-category');

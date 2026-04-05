@@ -1007,9 +1007,23 @@ button {
     overflow: hidden;
 }
 
+.breakfast-price-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
 .breakfast-price-badge {
     text-align: center;
-    margin-bottom: 3rem;
+}
+
+.breakfast-price-divider {
+    width: 2px;
+    height: 70px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
 }
 
 .breakfast-price {
@@ -1019,6 +1033,10 @@ button {
     font-weight: 900;
     color: var(--gold);
     line-height: 1;
+}
+
+.breakfast-price.kids {
+    color: var(--gold-light);
 }
 
 .breakfast-price-label {
@@ -1261,6 +1279,145 @@ button {
     transition: transform 0.3s var(--transition);
 }
 
+/* ===== Menu Card Images ===== */
+.menu-card-img {
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s var(--transition);
+}
+
+.menu-card:hover .menu-card-img {
+    transform: scale(1.03);
+}
+
+/* Biryani images */
+.veg-biryani-img { background: linear-gradient(135deg, #2d5a27, #8bc34a33), linear-gradient(45deg, #1a1a1a, #2a2a1a); background-color: #1a2a15; }
+.egg-biryani-img { background: linear-gradient(135deg, #d4a017, #fff8dc33), linear-gradient(45deg, #1a1a1a, #2a2a1a); background-color: #2a2515; }
+.chicken-biryani-img { background: linear-gradient(135deg, #c0392b55, #e67e2255), linear-gradient(45deg, #1a1a1a, #2a1a10); background-color: #2a1a10; }
+.lamb-biryani-img { background: linear-gradient(135deg, #8b0000, #c8a97e33), linear-gradient(45deg, #1a1a1a, #2a1510); background-color: #2a1510; }
+.prawn-biryani-img { background: linear-gradient(135deg, #e67e22, #ff634733), linear-gradient(45deg, #1a1a1a, #2a1a15); background-color: #2a1a15; }
+
+/* Burger images */
+.grilled-chicken-burger-img { background: linear-gradient(135deg, #d4a017, #8b451355), linear-gradient(45deg, #1a1a1a, #2a2010); background-color: #2a2010; }
+.crispy-burger-img { background: linear-gradient(135deg, #e67e22, #c0392b55), linear-gradient(45deg, #1a1a1a, #2a1a10); background-color: #2a1a10; }
+.veg-burger-img { background: linear-gradient(135deg, #27ae60, #8bc34a55), linear-gradient(45deg, #1a1a1a, #152a15); background-color: #152a15; }
+.beef-burger-img { background: linear-gradient(135deg, #8b0000, #d4a01755), linear-gradient(45deg, #1a1a1a, #2a1510); background-color: #2a1510; }
+.double-burger-img { background: linear-gradient(135deg, #c0392b, #8b000055), linear-gradient(45deg, #1a1a1a, #2a1010); background-color: #2a1010; }
+
+/* Coffee images */
+.coffee-img { background: linear-gradient(135deg, #3e2723, #6d4c4155), linear-gradient(45deg, #1a1410, #2a1f15); background-color: #2a1f15; }
+.americano-img { background: linear-gradient(135deg, #4e342e, #3e272355), linear-gradient(45deg, #1a1410, #251a10); background-color: #251a10; }
+.doubleespresso-img { background: linear-gradient(135deg, #3e2723, #1b0c0055), linear-gradient(45deg, #0f0a05, #2a1f15); background-color: #1a1410; }
+.latte-img { background: linear-gradient(135deg, #d7ccc8, #a1887f55), linear-gradient(45deg, #1a1a18, #2a2520); background-color: #2a2520; }
+.cappuccino-img { background: linear-gradient(135deg, #8d6e63, #d7ccc855), linear-gradient(45deg, #1a1410, #2a2015); background-color: #2a2015; }
+.flatwhite-img { background: linear-gradient(135deg, #bcaaa4, #efebe955), linear-gradient(45deg, #1a1a18, #2a2822); background-color: #2a2822; }
+.hotchoc-img { background: linear-gradient(135deg, #4e342e, #6d4c4155), linear-gradient(45deg, #120d0a, #2a1a15); background-color: #2a1a15; }
+.tea-img { background: linear-gradient(135deg, #c8a97e, #a1887f55), linear-gradient(45deg, #1a1810, #2a2515); background-color: #2a2515; }
+.fruittea-img { background: linear-gradient(135deg, #e91e63, #ff980055), linear-gradient(45deg, #1a1015, #2a1520); background-color: #2a1520; }
+
+/* Food emoji overlay on card images */
+.menu-card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 10, 0.6) 100%);
+}
+
+/* ===== Sky Sports Banner ===== */
+.skysports-banner {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #001f5b, #c0392b);
+    overflow: hidden;
+}
+
+.skysports-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.skysports-img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.skysports-text {
+    text-align: left;
+    max-width: 400px;
+}
+
+.skysports-text h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+}
+
+.skysports-text p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+/* ===== Order Online Section ===== */
+.order-online {
+    padding: 6rem 0;
+    background: var(--dark-3);
+}
+
+.order-platforms {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.order-platform-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 3rem;
+    background: var(--dark-2);
+    border: 1px solid rgba(200, 169, 126, 0.1);
+    border-radius: 20px;
+    transition: all 0.4s var(--transition);
+}
+
+.order-platform-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.platform-logo {
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+    transition: transform 0.4s;
+}
+
+.order-platform-card:hover .platform-logo {
+    transform: scale(1.05);
+}
+
+.platform-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .about-grid {
@@ -1363,6 +1520,29 @@ button {
     .menu-tab {
         padding: 0.5rem 1rem;
         font-size: 0.75rem;
+    }
+
+    .skysports-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .skysports-text {
+        text-align: center;
+    }
+
+    .order-platforms {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .breakfast-price-badges {
+        gap: 2rem;
+    }
+
+    .breakfast-price-divider {
+        width: 60px;
+        height: 2px;
     }
 }
 
