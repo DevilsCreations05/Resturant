@@ -910,6 +910,18 @@ button {
     font-style: italic;
 }
 
+/* ===== Coffee Section ===== */
+.coffee-section {
+    padding: 8rem 0;
+    background: var(--dark);
+}
+
+.coffee-section .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
 /* ===== Drinks Section ===== */
 .drinks-section {
     padding: 8rem 0;
