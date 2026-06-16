@@ -806,7 +806,7 @@ button {
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 1.5rem;
 }
 
@@ -916,7 +916,7 @@ button {
 
 .coffee-section .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 1.5rem;
 }
 
@@ -928,7 +928,7 @@ button {
 
 .drinks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
 }
 
@@ -1060,7 +1060,7 @@ button {
 
 .breakfast-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: 1.5rem;
 }
 
@@ -1119,6 +1119,7 @@ button {
 .contact-section {
     padding: 8rem 0;
     background: var(--dark);
+    overflow-x: hidden; /* clip fade-left/right entrance transforms so they don't cause horizontal scroll on mobile */
 }
 
 .contact-grid {
