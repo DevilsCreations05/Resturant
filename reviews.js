@@ -292,6 +292,23 @@
         $("reviewForm").addEventListener("submit", submitReview);
 
         loadReviews();
+        handleDeepLink();
+        window.addEventListener("hashchange", handleDeepLink);
+    }
+
+    // Open the write-review flow when arriving via QR / deep link:
+    //   https://yoursite.com/#write-review
+    function handleDeepLink() {
+        var h = (window.location.hash || "").toLowerCase().replace(/[^a-z-]/g, "");
+        if (h !== "#write-review".replace("#", "") && h !== "writereview") return;
+        var sec = document.querySelector(".reviews-section");
+        // Wait for the preloader (~1.8s) to clear, then scroll + open the modal.
+        var preloader = document.getElementById("preloader");
+        var delay = preloader && !preloader.classList.contains("hidden") ? 2000 : 300;
+        setTimeout(function () {
+            if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(function () { openModal($("writeModal")); }, 500);
+        }, delay);
     }
 
     if (document.readyState === "loading") {
