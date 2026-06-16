@@ -219,6 +219,7 @@
     function submitReview(e) {
         e.preventDefault();
         var name = $("rvName").value.trim();
+        var email = $("rvEmail").value.trim();
         var rating = Number($("rvRating").value);
         var text = $("rvText").value.trim();
         var msg = $("rvFormMsg");
@@ -226,12 +227,13 @@
 
         if (!name || !text) { msg.textContent = "Please fill in your name and review."; msg.className = "rv-form-msg error"; return; }
         if (!rating) { msg.textContent = "Please pick a star rating."; msg.className = "rv-form-msg error"; return; }
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = "Please enter a valid email or leave it blank."; msg.className = "rv-form-msg error"; return; }
 
         var btn = $("rvSubmit");
         btn.disabled = true;
         btn.textContent = "Submitting...";
 
-        var review = { name: name, rating: rating, text: text, date: new Date().toISOString().slice(0, 10) };
+        var review = { name: name, email: email, rating: rating, text: text, date: new Date().toISOString().slice(0, 10) };
 
         function onDone(ok) {
             // optimistic: show immediately

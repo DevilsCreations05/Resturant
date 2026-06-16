@@ -31,8 +31,8 @@ var CONFIG = {
 };
 // ==============================================================
 
-// Columns: id | date | name | rating | text
-var HEADERS = ["id", "date", "name", "rating", "text"];
+// Columns: id | date | name | rating | text | email
+var HEADERS = ["id", "date", "name", "rating", "text", "email"];
 
 function getSheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -45,7 +45,9 @@ function getSheet_() {
   return sh;
 }
 
-function readAll_() {
+// includeEmail: only true for authenticated admin requests, so customer
+// emails are never exposed in the public reviews feed.
+function readAll_(includeEmail) {
   var sh = getSheet_();
   var values = sh.getDataRange().getValues();
   var out = [];
@@ -55,7 +57,9 @@ function readAll_() {
     if (!row[0] && !row[2]) continue; // skip blank rows
     var d = row[1];
     var dateStr = (d instanceof Date) ? Utilities.formatDate(d, tz, "yyyy-MM-dd") : String(d).slice(0, 10);
-    out.push({ id: String(row[0]), date: dateStr, name: row[2], rating: Number(row[3]), text: row[4] });
+    var rev = { id: String(row[0]), date: dateStr, name: row[2], rating: Number(row[3]), text: row[4] };
+    if (includeEmail) rev.email = row[5] || "";
+    out.push(rev);
   }
   return out;
 }
@@ -74,8 +78,9 @@ function doGet(e) {
       if (String(admin) !== String(CONFIG.ADMIN_SECRET)) {
         return json_({ error: "unauthorized" });
       }
+      return json_(readAll_(true)); // admin view includes emails
     }
-    return json_(readAll_());
+    return json_(readAll_(false)); // public view hides emails
   } catch (err) {
     return json_({ error: String(err) });
   }
@@ -108,6 +113,7 @@ function doPost(e) {
 function addReview_(r) {
   var name = String(r.name || "").trim().slice(0, 80);
   var text = String(r.text || "").trim().slice(0, 1000);
+  var email = String(r.email || "").trim().slice(0, 120);
   var rating = Math.max(1, Math.min(5, Math.round(Number(r.rating) || 0)));
   if (!name || !text || !rating) return json_({ error: "missing fields" });
 
@@ -115,9 +121,9 @@ function addReview_(r) {
   var id = "r" + new Date().getTime() + Math.floor(Math.random() * 1000);
 
   var sh = getSheet_();
-  sh.appendRow([id, date, name, rating, text]);
+  sh.appendRow([id, date, name, rating, text, email]);
 
-  notify_(name, rating, text);
+  notify_(name, rating, text, email);
   return json_({ ok: true, id: id });
 }
 
@@ -134,12 +140,13 @@ function deleteReview_(id) {
   return json_({ error: "not found" });
 }
 
-function notify_(name, rating, text) {
+function notify_(name, rating, text, email) {
   try {
     var subject = "⭐ New review (" + rating + "/5) — Toast & Tap";
     var body =
       "You received a new customer review:\n\n" +
       "Name:   " + name + "\n" +
+      "Email:  " + (email ? email : "(not provided)") + "\n" +
       "Rating: " + rating + " / 5\n" +
       "Review: " + text + "\n\n" +
       "Manage / delete reviews here:\n" + CONFIG.ADMIN_URL + "\n";

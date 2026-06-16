@@ -58,6 +58,8 @@
             padding: 1.2rem 1.4rem; margin-bottom: .9rem;
         }
         .rrow .nm { color: var(--white); font-weight: 600; }
+        .rrow .em { font-size: .78rem; margin-top: .1rem; }
+        .rrow .em a { color: var(--gold); }
         .rrow .st { color: var(--gold); letter-spacing: 1px; font-size: .9rem; }
         .rrow .dt { font-size: .72rem; color: var(--text); margin: .2rem 0 .5rem; }
         .rrow .tx { font-size: .9rem; line-height: 1.6; color: var(--text-light); }
@@ -141,6 +143,7 @@
                 return '<div class="rrow" data-id="'+esc(r.id)+'">'+
                     '<div>'+
                         '<div class="nm">'+esc(r.name)+'</div>'+
+                        (r.email ? '<div class="em"><a href="mailto:'+esc(r.email)+'">'+esc(r.email)+'</a></div>' : '')+
                         '<div class="st">'+stars(r.rating)+'</div>'+
                         '<div class="dt">'+esc(fmt(r.date))+'</div>'+
                         '<div class="tx">'+esc(r.text)+'</div>'+

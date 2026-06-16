@@ -1874,6 +1874,12 @@ button {
     color: var(--gold);
     margin-bottom: 0.5rem;
 }
+.rv-optional {
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0.5px;
+    font-size: 0.7rem;
+}
 .rv-field input,
 .rv-field textarea {
     width: 100%;
