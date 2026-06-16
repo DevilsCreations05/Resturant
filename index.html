@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2.2">
+    <link rel="stylesheet" href="styles.css?v=2.3">
 </head>
 <body>
     <!-- Custom Cursor -->
@@ -40,6 +40,7 @@
                 <li><a href="#coffee" class="nav-link">Coffee</a></li>
                 <li><a href="#drinks" class="nav-link">Drinks</a></li>
                 <li><a href="#breakfast" class="nav-link">Breakfast</a></li>
+                <li><a href="#reviews" class="nav-link">Reviews</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <a href="#menu" class="nav-cta">View Menu</a>
@@ -933,6 +934,97 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-label">Reviews</span>
+                <h2 class="section-title">What Our <em>Guests Say</em></h2>
+                <p class="section-subtitle">Real words from our diners &bull; Share your own experience</p>
+            </div>
+
+            <!-- Rating Summary (Play Store style) -->
+            <div class="reviews-summary" data-animate="fade-up" data-delay="100">
+                <div class="rating-score">
+                    <span class="rating-average" id="ratingAverage">0.0</span>
+                    <div class="rating-score-stars" id="ratingAverageStars" aria-hidden="true"></div>
+                    <span class="rating-total" id="ratingTotal">No reviews yet</span>
+                </div>
+                <div class="rating-bars" id="ratingBars">
+                    <!-- bars injected by reviews.js -->
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="reviews-actions" data-animate="fade-up" data-delay="200">
+                <button class="btn btn-primary magnetic-btn" id="writeReviewBtn">Write a Review</button>
+                <button class="btn btn-outline magnetic-btn" id="viewAllBtn">View All Reviews</button>
+            </div>
+
+            <!-- Top 3 reviews -->
+            <div class="reviews-grid" id="reviewsTop" data-animate="fade-up" data-delay="300">
+                <!-- top 3 cards injected by reviews.js -->
+            </div>
+
+            <p class="reviews-empty" id="reviewsEmpty" hidden>Be the first to leave a review &mdash; tap <strong>Write a Review</strong> above.</p>
+        </div>
+    </section>
+
+    <!-- Write Review Modal -->
+    <div class="rv-modal" id="writeModal" aria-hidden="true">
+        <div class="rv-modal-overlay" data-close></div>
+        <div class="rv-modal-box" role="dialog" aria-modal="true" aria-labelledby="writeModalTitle">
+            <button class="rv-modal-close" data-close aria-label="Close">&times;</button>
+            <h3 class="rv-modal-title" id="writeModalTitle">Write a <em>Review</em></h3>
+            <form id="reviewForm" class="rv-form">
+                <div class="rv-field">
+                    <label for="rvName">Your Name</label>
+                    <input type="text" id="rvName" name="name" maxlength="50" placeholder="e.g. Sarah J." required>
+                </div>
+                <div class="rv-field">
+                    <label>Your Rating</label>
+                    <div class="rv-star-picker" id="starPicker" role="radiogroup" aria-label="Star rating">
+                        <button type="button" class="rv-star" data-value="1" aria-label="1 star">&#9733;</button>
+                        <button type="button" class="rv-star" data-value="2" aria-label="2 stars">&#9733;</button>
+                        <button type="button" class="rv-star" data-value="3" aria-label="3 stars">&#9733;</button>
+                        <button type="button" class="rv-star" data-value="4" aria-label="4 stars">&#9733;</button>
+                        <button type="button" class="rv-star" data-value="5" aria-label="5 stars">&#9733;</button>
+                    </div>
+                    <input type="hidden" id="rvRating" name="rating" value="0" required>
+                </div>
+                <div class="rv-field">
+                    <label for="rvText">Your Review</label>
+                    <textarea id="rvText" name="text" rows="4" maxlength="600" placeholder="Tell us about the food, the service, the vibe..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary rv-submit" id="rvSubmit">Submit Review</button>
+                <p class="rv-form-msg" id="rvFormMsg"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- All Reviews Modal -->
+    <div class="rv-modal" id="allModal" aria-hidden="true">
+        <div class="rv-modal-overlay" data-close></div>
+        <div class="rv-modal-box rv-modal-box-wide" role="dialog" aria-modal="true" aria-labelledby="allModalTitle">
+            <button class="rv-modal-close" data-close aria-label="Close">&times;</button>
+            <h3 class="rv-modal-title" id="allModalTitle">All <em>Reviews</em></h3>
+            <div class="rv-filter" id="rvFilter">
+                <button class="rv-filter-chip active" data-star="0">All</button>
+                <button class="rv-filter-chip" data-star="5">5 &#9733;</button>
+                <button class="rv-filter-chip" data-star="4">4 &#9733;</button>
+                <button class="rv-filter-chip" data-star="3">3 &#9733;</button>
+                <button class="rv-filter-chip" data-star="2">2 &#9733;</button>
+                <button class="rv-filter-chip" data-star="1">1 &#9733;</button>
+            </div>
+            <div class="rv-all-list" id="reviewsAll">
+                <!-- all cards injected by reviews.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="rv-toast" id="rvToast" role="status" aria-live="polite"></div>
+
     <!-- Contact / Footer -->
     <section class="contact-section" id="contact">
         <div class="container">
@@ -1001,6 +1093,7 @@
                     <a href="#menu">Menu</a>
                     <a href="#drinks">Drinks</a>
                     <a href="#breakfast">Breakfast</a>
+                    <a href="#reviews">Reviews</a>
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-hours">
@@ -1018,5 +1111,7 @@
     </footer>
 
     <script src="script.js?v=2.2"></script>
+    <script src="config.js?v=1.0"></script>
+    <script src="reviews.js?v=1.0"></script>
 </body>
 </html>

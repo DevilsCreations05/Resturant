@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Reviews Admin | Toast & Tap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c8a97e; --gold-light: #e8d5b5; --dark: #0a0a0a;
+            --dark-2: #121212; --dark-3: #1a1a1a; --dark-4: #222; --text: #b0b0b0;
+            --text-light: #d0d0d0; --white: #fff; --red: #c0392b; --green: #27ae60;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif; background: var(--dark); color: var(--text);
+            min-height: 100vh; padding: 2rem 1rem; -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--gold); }
+        h1 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 2rem; }
+        h1 em { color: var(--gold); font-style: italic; }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        .head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+        .head a.site { font-size: .85rem; }
+
+        .gate, .panel { background: var(--dark-2); border: 1px solid rgba(200,169,126,.15); border-radius: 16px; padding: 2.5rem; }
+        .panel { display: none; }
+        label { display: block; font-size: .75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+        input[type=password] {
+            width: 100%; padding: .9rem 1rem; background: var(--dark-4); border: 1px solid rgba(200,169,126,.2);
+            border-radius: 10px; color: var(--white); font-size: 1rem; margin-bottom: 1rem;
+        }
+        input:focus { outline: none; border-color: var(--gold); }
+        .btn {
+            display: inline-block; padding: .8rem 2rem; border: none; border-radius: 50px; cursor: pointer;
+            font-family: inherit; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; font-size: .8rem;
+            background: var(--gold); color: var(--dark); transition: all .3s;
+        }
+        .btn:hover { background: var(--gold-light); }
+        .btn:disabled { opacity: .5; cursor: not-allowed; }
+        .btn-del { background: var(--red); color: #fff; padding: .5rem 1.1rem; }
+        .btn-del:hover { background: #e04b3a; }
+        .btn-ghost { background: transparent; border: 1px solid rgba(200,169,126,.3); color: var(--gold); }
+
+        .msg { font-size: .85rem; margin-top: .5rem; min-height: 1.2em; }
+        .msg.error { color: var(--red); }
+        .msg.success { color: var(--green); }
+
+        .stats { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .stat { background: var(--dark-3); border: 1px solid rgba(200,169,126,.12); border-radius: 12px; padding: 1rem 1.5rem; }
+        .stat b { display: block; font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); }
+        .stat span { font-size: .75rem; }
+
+        .rrow {
+            display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start;
+            background: var(--dark-3); border: 1px solid rgba(200,169,126,.1); border-radius: 12px;
+            padding: 1.2rem 1.4rem; margin-bottom: .9rem;
+        }
+        .rrow .nm { color: var(--white); font-weight: 600; }
+        .rrow .st { color: var(--gold); letter-spacing: 1px; font-size: .9rem; }
+        .rrow .dt { font-size: .72rem; color: var(--text); margin: .2rem 0 .5rem; }
+        .rrow .tx { font-size: .9rem; line-height: 1.6; color: var(--text-light); }
+        .empty { text-align: center; padding: 2rem; color: var(--text); }
+        .note { font-size: .8rem; color: var(--text); margin-top: 1.5rem; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="head">
+            <h1>Reviews <em>Admin</em></h1>
+            <a class="site" href="index.html">&larr; Back to website</a>
+        </div>
+
+        <!-- Login gate -->
+        <div class="gate" id="gate">
+            <label for="pw">Admin Password</label>
+            <input type="password" id="pw" placeholder="Enter admin password" autocomplete="current-password">
+            <button class="btn" id="loginBtn">Unlock</button>
+            <p class="msg" id="gateMsg"></p>
+        </div>
+
+        <!-- Panel -->
+        <div class="panel" id="panel">
+            <div class="stats" id="stats"></div>
+            <div id="list"></div>
+            <p class="note" id="note"></p>
+            <p style="margin-top:1.5rem"><button class="btn btn-ghost" id="logoutBtn">Lock again</button></p>
+        </div>
+    </div>
+
+    <script src="config.js?v=1.0"></script>
+    <script>
+    (function () {
+        var CFG = window.REVIEWS_CONFIG || { apiUrl: "" };
+        var API = (CFG.apiUrl || "").trim();
+        var secret = "";
+
+        function $(id) { return document.getElementById(id); }
+        function esc(s) { return String(s||"").replace(/[&<>"']/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+        function stars(n){ var o=""; for(var i=1;i<=5;i++){o+= i<=Math.round(n)?"★":"☆";} return o; }
+        function fmt(d){ var dt=new Date(d); return isNaN(dt)?"":dt.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}); }
+
+        function login() {
+            var pw = $("pw").value.trim();
+            var m = $("gateMsg");
+            m.className = "msg";
+            if (!pw) { m.textContent = "Enter the password."; m.className = "msg error"; return; }
+            if (!API) {
+                m.textContent = "Backend not connected yet (config.js apiUrl is empty). See SETUP-REVIEWS.md.";
+                m.className = "msg error"; return;
+            }
+            secret = pw;
+            m.textContent = "Checking...";
+            // We verify by attempting an authenticated list. Server checks the secret.
+            fetch(API + "?admin=" + encodeURIComponent(secret))
+                .then(function(r){ return r.json(); })
+                .then(function(data){
+                    if (data && data.error === "unauthorized") {
+                        m.textContent = "Wrong password."; m.className = "msg error"; return;
+                    }
+                    var list = Array.isArray(data) ? data : (data.reviews || []);
+                    $("gate").style.display = "none";
+                    $("panel").style.display = "block";
+                    render(list);
+                })
+                .catch(function(){ m.textContent = "Could not reach the server."; m.className = "msg error"; });
+        }
+
+        function render(list) {
+            list = list.slice().sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
+            var total = list.length;
+            var avg = total ? (list.reduce(function(s,r){return s+Number(r.rating);},0)/total) : 0;
+            $("stats").innerHTML =
+                '<div class="stat"><b>'+total+'</b><span>Total reviews</span></div>'+
+                '<div class="stat"><b>'+avg.toFixed(1)+'</b><span>Average rating</span></div>';
+
+            if (!total) { $("list").innerHTML = '<p class="empty">No reviews yet.</p>'; return; }
+
+            $("list").innerHTML = list.map(function(r){
+                return '<div class="rrow" data-id="'+esc(r.id)+'">'+
+                    '<div>'+
+                        '<div class="nm">'+esc(r.name)+'</div>'+
+                        '<div class="st">'+stars(r.rating)+'</div>'+
+                        '<div class="dt">'+esc(fmt(r.date))+'</div>'+
+                        '<div class="tx">'+esc(r.text)+'</div>'+
+                    '</div>'+
+                    '<div><button class="btn btn-del" data-id="'+esc(r.id)+'">Delete</button></div>'+
+                '</div>';
+            }).join("");
+        }
+
+        function del(id, btn) {
+            if (!confirm("Delete this review permanently?")) return;
+            btn.disabled = true; btn.textContent = "Deleting...";
+            fetch(API, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify({ action: "delete", id: id, admin: secret })
+            })
+            .then(function(r){ return r.json(); })
+            .then(function(res){
+                if (res && res.ok) {
+                    var row = document.querySelector('.rrow[data-id="'+CSS.escape(String(id))+'"]');
+                    if (row) row.remove();
+                    if (!document.querySelector(".rrow")) $("list").innerHTML = '<p class="empty">No reviews yet.</p>';
+                } else {
+                    alert("Delete failed: " + (res && res.error ? res.error : "unknown"));
+                    btn.disabled = false; btn.textContent = "Delete";
+                }
+            })
+            .catch(function(){ alert("Could not reach the server."); btn.disabled=false; btn.textContent="Delete"; });
+        }
+
+        $("loginBtn").addEventListener("click", login);
+        $("pw").addEventListener("keydown", function(e){ if(e.key==="Enter") login(); });
+        $("logoutBtn").addEventListener("click", function(){ secret=""; $("panel").style.display="none"; $("gate").style.display="block"; $("pw").value=""; $("gateMsg").textContent=""; });
+        $("list").addEventListener("click", function(e){
+            var b = e.target.closest(".btn-del");
+            if (b) del(b.dataset.id, b);
+        });
+
+        $("note").textContent = API ? "" : "⚠ Backend not connected. Add your Apps Script URL to config.js — see SETUP-REVIEWS.md.";
+    })();
+    </script>
+</body>
+</html>
